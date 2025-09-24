@@ -67,14 +67,14 @@
         <main class="space-y-12">
 
             <section id="introduction" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
-                <h2 class="text-2xl font-bold text-[#005f73] mb-4">1. Introducción y Objetivo 🎯</h2>
+                <h2 class="text-2xl font-bold text-[#005f73] mb-4">Introducción y Objetivo 🎯</h2>
                 <p class="text-lg text-gray-700">
                     Este proyecto modela la temperatura de una ciudad montañosa usando dos variables: la <strong>hora del día (x)</strong> y la <strong>altitud (y)</strong>. El objetivo es crear una función $T(x,y)$ para explorar su comportamiento, dominio y rango, aplicando así los conceptos de cálculo de varias variables.
                 </p>
             </section>
 
             <section id="model" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
-                <h2 class="text-2xl font-bold text-[#005f73] mb-4">2. La Función Matemática ⚙️</h2>
+                <h2 class="text-2xl font-bold text-[#005f73] mb-4">La Función Matemática ⚙️</h2>
                 <p class="text-lg text-gray-700 mb-4">
                     Basado en la variación diaria del sol y el efecto de la altitud, se propone el siguiente modelo:
                 </p>
@@ -105,6 +105,28 @@
                     <span class="text-sm text-gray-500">[Metros sobre el nivel del mar]</span>
                 </div>
             </section>
+                        <section id="calculos-detalle" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-[#005f73] mb-4">Evaluación en Puntos Específicos 🔍</h2>
+                <p class="text-lg text-gray-700 mb-6">Para ver el modelo en acción, evaluemos la función en puntos clave del dominio.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-slate-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-[#0a9396] mb-2">Ejemplo 1: 8:00 AM a 1500m</h3>
+                        <p class="text-gray-600 mb-4">Calculamos T(8, 1500):</p>
+                        <div class="math-formula text-sm">
+                            $$ T(8, 1500) = 15 + 12\sin\left(\frac{\pi}{12}(8-6)\right) - 0 - 0 $$
+                            $$ = 15 + 12\sin\left(\frac{\pi}{6}\right) = 15 + 12 \cdot (0.5) = \mathbf{21.00^\circ C} $$
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-[#0a9396] mb-2">Ejemplo 2: 12:00 PM a 2500m</h3>
+                        <p class="text-gray-600 mb-4">Calculamos T(12, 2500) en el punto más alto:</p>
+                        <div class="math-formula text-sm">
+                            $$ T(12, 2500) = 15 + 12(1) - 6.5(1) - 2(1)(1) $$
+                            $$ = 15 + 12 - 6.5 - 2 = 27 - 8.5 = \mathbf{18.50^\circ C} $$
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <section id="2d-charts" class="grid grid-cols-1 gap-8">
                 <div class="bg-white rounded-lg shadow-lg p-6">
@@ -125,7 +147,7 @@
             </section>
 
             <section id="conclusions" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
-                <h2 class="text-2xl font-bold text-[#005f73] mb-4">5. Conclusiones ✅</h2>
+                <h2 class="text-2xl font-bold text-[#005f73] mb-4">Conclusiones ✅</h2>
                 <ul class="list-disc list-inside space-y-3 text-lg text-gray-700">
                     <li>El modelo matemático representa exitosamente la temperatura dentro del <strong>dominio</strong> especificado.</li>
                     <li>El <strong>rango</strong> de temperaturas predicho es consistente con las condiciones climáticas reales.</li>
@@ -134,7 +156,7 @@
             </section>
 
             <section id="references" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
-                <h2 class="text-2xl font-bold text-[#005f73] mb-4">6. Referencias 📚</h2>
+                <h2 class="text-2xl font-bold text-[#005f73] mb-4">Referencias 📚</h2>
                 <ul class="list-disc list-inside space-y-2 text-gray-600">
                     <li>Stewart, J. (2018). <em>Cálculo de varias variables</em>. 8ª edición. Cengage Learning.</li>
                     <li>Larson, R., & Edwards, B. H. (2019). <em>Multivariable Calculus</em>. 11ª edición. Cengage Learning.</li>
