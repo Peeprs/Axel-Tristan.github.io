@@ -67,22 +67,22 @@
         <main class="space-y-12">
 
             <section id="introduction" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
-                <h2 class="text-2xl font-bold text-[#005f73] mb-4">1. Introducción y Objetivo del Modelo 🎯</h2>
+                <h2 class="text-2xl font-bold text-[#005f73] mb-4">1. Introducción y Objetivo 🎯</h2>
                 <p class="text-lg text-gray-700">
-                    Este proyecto desarrolla un modelo matemático para analizar y predecir cómo varía la temperatura en una ciudad montañosa. Se enfoca en la interacción de dos variables clave: la **hora del día (x)**, observada entre las 6:00 y las 18:00, y la **altitud sobre el nivel del mar (y)**, entre 1500 y 2500 metros. El objetivo es crear una función $T(x,y)$ que no solo prediga la temperatura, sino que también permita analizar sus tasas de cambio y determinar sus valores extremos, ofreciendo información valiosa para la planificación urbana y estudios ambientales.
+                    Este proyecto modela la temperatura de una ciudad montañosa usando dos variables: la <strong>hora del día (x)</strong> y la <strong>altitud (y)</strong>. El objetivo es crear una función $T(x,y)$ para explorar su comportamiento, dominio y rango, aplicando así los conceptos de cálculo de varias variables.
                 </p>
             </section>
 
             <section id="model" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
                 <h2 class="text-2xl font-bold text-[#005f73] mb-4">2. La Función Matemática ⚙️</h2>
                 <p class="text-lg text-gray-700 mb-4">
-                    Basado en principios físicos como la variación sinusoidal diaria de la temperatura y el gradiente térmico atmosférico (la temperatura disminuye con la altitud), se propone el siguiente modelo matemático:
+                    Basado en la variación diaria del sol y el efecto de la altitud, se propone el siguiente modelo:
                 </p>
                 <div class="math-formula bg-slate-50 p-4 rounded-md text-center">
                     $$ T(x,y) = 15 + 12\sin\left(\frac{\pi}{12}(x-6)\right) - 6.5\frac{(y-1500)}{1000} - 2\sin\left(\frac{\pi}{12}(x-6)\right)\frac{(y-1500)}{1000} $$
                 </div>
             </section>
-            
+
             <section id="stats" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="stat-card bg-white rounded-lg shadow-lg p-6 text-center">
                     <h3 class="text-xl font-bold mb-2">Temperatura Máxima ☀️</h3>
@@ -106,104 +106,30 @@
                 </div>
             </section>
 
-            <section id="2d-charts" class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <section id="2d-charts" class="grid grid-cols-1 gap-8">
                 <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h2 class="text-2xl font-bold text-[#005f73] mb-4 text-center">Variación de Temperatura por Hora</h2>
-                    <p class="text-center text-gray-600 mb-4">A una altitud constante de 1500 metros, la temperatura sigue un patrón sinusoidal claro, alcanzando su punto máximo al mediodía (12:00) y disminuyendo hacia la mañana y la tarde.</p>
+                    <h2 class="text-2xl font-bold text-[#005f73] mb-4 text-center">Gráfica: Variación por Hora (a 1500m)</h2>
+                    <p class="text-center text-gray-600 mb-4">La curva muestra cómo cambia la temperatura durante el día a una altitud fija.</p>
                     <div class="chart-container">
                         <canvas id="tempVsTimeChart"></canvas>
-                    </div>
-                </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h2 class="text-2xl font-bold text-[#005f73] mb-4 text-center">Efecto de la Altitud en la Temperatura</h2>
-                     <p class="text-center text-gray-600 mb-4">Manteniendo la hora fija en el punto más cálido (12:00 PM), se observa una disminución lineal en la temperatura a medida que aumenta la altitud, confirmando el efecto del gradiente térmico.</p>
-                    <div class="chart-container">
-                        <canvas id="tempVsAltitudeChart"></canvas>
                     </div>
                 </div>
             </section>
 
             <section id="3d-plot" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
-                <h2 class="text-2xl font-bold text-[#005f73] mb-4 text-center">Visualización 3D del Modelo de Temperatura</h2>
+                <h2 class="text-2xl font-bold text-[#005f73] mb-4 text-center">Visualización 3D: La Superficie de Temperatura</h2>
                 <p class="text-lg text-gray-700 text-center max-w-4xl mx-auto">
-                    Esta superficie tridimensional integra todas las variables. El eje X representa la hora, el eje Y la altitud, y el eje Z (la altura y color de la superficie) muestra la temperatura resultante. Se puede apreciar claramente cómo la "ola" de calor del día alcanza su cresta al mediodía y cómo toda la superficie desciende a medida que la altitud aumenta.
+                    Esta superficie representa la función completa sobre su dominio. Los ejes X/Y son la hora/altitud, y el eje Z (altura y color) es la temperatura. Así vemos cómo el dominio se transforma en el rango.
                 </p>
                 <div id="plot3d" class="plotly-container mx-auto"></div>
-            </section>
-
-            <section id="derivatives" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
-                 <h2 class="text-2xl font-bold text-[#005f73] mb-4">3. Análisis de Cambio: Derivadas Parciales</h2>
-                 <p class="text-lg text-gray-700 mb-6">Las derivadas parciales nos informan sobre la tasa de cambio instantánea de la temperatura con respecto a cada variable, manteniendo la otra constante. Son cruciales para entender la dinámica del sistema.</p>
-                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                        <h3 class="text-xl font-bold text-[#0a9396] mb-2">Cambio Respecto a la Hora ($\frac{\partial T}{\partial x}$)</h3>
-                        <p class="text-gray-600 mb-4">Indica qué tan rápido aumenta o disminuye la temperatura por hora. Es positiva en la mañana (calentando), cero al mediodía (punto máximo) y negativa en la tarde (enfriando).</p>
-                        <div class="math-formula bg-slate-50 p-4 rounded-md">
-                        $$ \frac{\partial T}{\partial x} = \pi \cos\left(\frac{\pi}{12}(x-6)\right)\left[1 - \frac{y-1500}{6000}\right] $$
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-[#0a9396] mb-2">Cambio Respecto a la Altitud ($\frac{\partial T}{\partial y}$)</h3>
-                        <p class="text-gray-600 mb-4">Mide cómo cambia la temperatura por cada metro de ascenso. Es consistentemente negativa, confirmando que la temperatura siempre disminuye al ganar altitud.</p>
-                        <div class="math-formula bg-slate-50 p-4 rounded-md">
-                         $$ \frac{\partial T}{\partial y} = -0.0065 - 0.002\sin\left(\frac{\pi}{12}(x-6)\right) $$
-                        </div>
-                    </div>
-                 </div>
-            </section>
-            
-            <section id="calculos-detalle" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
-                <h2 class="text-2xl font-bold text-[#005f73] mb-4">4. Análisis de Puntos Específicos: Cálculos Detallados 🔍</h2>
-                <p class="text-lg text-gray-700 mb-6">Para ilustrar cómo funciona el modelo, evaluemos la función y sus derivadas en puntos específicos dentro de nuestro dominio. Esto nos da una idea tangible del clima en diferentes momentos y altitudes.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-slate-50 p-6 rounded-lg">
-                        <h3 class="text-xl font-bold text-[#0a9396] mb-2">Ejemplo 1: Temperatura a las 8:00 AM en 1500m</h3>
-                        <p class="text-gray-600 mb-4">Calculamos T(8, 1500):</p>
-                        <div class="math-formula text-sm">
-                            $$ T(8, 1500) = 15 + 12\sin\left(\frac{\pi}{12}(8-6)\right) - 0 - 0 $$
-                            $$ = 15 + 12\sin\left(\frac{2\pi}{12}\right) = 15 + 12\sin\left(\frac{\pi}{6}\right) $$
-                            $$ = 15 + 12 \cdot (0.5) = 15 + 6 = \mathbf{21.00^\circ C} $$
-                        </div>
-                    </div>
-                    <div class="bg-slate-50 p-6 rounded-lg">
-                        <h3 class="text-xl font-bold text-[#0a9396] mb-2">Ejemplo 2: Temperatura a las 12:00 PM en 2500m</h3>
-                        <p class="text-gray-600 mb-4">Calculamos T(12, 2500) en el punto más alto:</p>
-                        <div class="math-formula text-sm">
-                            $$ T(12, 2500) = 15 + 12\sin\left(\frac{\pi}{2}\right) - 6.5\frac{1000}{1000} - 2\sin\left(\frac{\pi}{2}\right)\frac{1000}{1000} $$
-                            $$ = 15 + 12(1) - 6.5(1) - 2(1)(1) $$
-                            $$ = 15 + 12 - 6.5 - 2 = 27 - 8.5 = \mathbf{18.50^\circ C} $$
-                        </div>
-                    </div>
-                    <div class="bg-slate-50 p-6 rounded-lg">
-                        <h3 class="text-xl font-bold text-[#0a9396] mb-2">Ejemplo 3: Tasa de Cambio por Hora (8:00 AM, 1500m)</h3>
-                        <p class="text-gray-600 mb-4">Evaluamos $\frac{\partial T}{\partial x}$ en (8, 1500):</p>
-                         <div class="math-formula text-sm">
-                            $$ \frac{\partial T}{\partial x} = \pi \cos\left(\frac{\pi}{6}\right)\left[1 - \frac{1500-1500}{6000}\right] $$
-                            $$ = \pi \cdot \left(\frac{\sqrt{3}}{2}\right) \cdot (1) \approx \mathbf{+2.72^\circ C/\text{hora}} $$
-                            <p class="text-xs mt-2 text-gray-500">La temperatura está subiendo rápidamente.</p>
-                         </div>
-                    </div>
-                    <div class="bg-slate-50 p-6 rounded-lg">
-                        <h3 class="text-xl font-bold text-[#0a9396] mb-2">Ejemplo 4: Tasa de Cambio por Altitud (8:00 AM, 1500m)</h3>
-                        <p class="text-gray-600 mb-4">Evaluamos $\frac{\partial T}{\partial y}$ en (8, 1500):</p>
-                        <div class="math-formula text-sm">
-                             $$ \frac{\partial T}{\partial y} = -0.0065 - 0.002\sin\left(\frac{\pi}{6}\right) $$
-                             $$ = -0.0065 - 0.002 \cdot (0.5) = -0.0065 - 0.001 $$
-                             $$ = \mathbf{-0.0075^\circ C/\text{metro}} $$
-                             <p class="text-xs mt-2 text-gray-500">Por cada 100m de ascenso, la T° baja 0.75°C.</p>
-                        </div>
-                    </div>
-                </div>
             </section>
 
             <section id="conclusions" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
                 <h2 class="text-2xl font-bold text-[#005f73] mb-4">5. Conclusiones ✅</h2>
                 <ul class="list-disc list-inside space-y-3 text-lg text-gray-700">
-                    <li>El modelo matemático propuesto es **exitoso** y proporciona una representación realista de la variación de temperatura.</li>
-                    <li>El rango de temperaturas predicho (entre 8.50°C y 26.98°C) es **consistente** con las condiciones climáticas reales en ciudades montañosas.</li>
-                    <li>El comportamiento del modelo **respeta los principios físicos** conocidos, como el gradiente térmico y la variación diurna.</li>
-                    <li>Este modelo tiene una **utilidad práctica** para predicciones meteorológicas locales, planificación urbana y estudios ambientales.</li>
-                    <li>El proyecto demuestra cómo el **cálculo multivariable** es una herramienta poderosa para analizar sistemas complejos donde múltiples factores interactúan.</li>
+                    <li>El modelo matemático representa exitosamente la temperatura dentro del <strong>dominio</strong> especificado.</li>
+                    <li>El <strong>rango</strong> de temperaturas predicho es consistente con las condiciones climáticas reales.</li>
+                    <li>Las herramientas visuales son fundamentales para comprender el comportamiento de una función de varias variables.</li>
                 </ul>
             </section>
 
@@ -212,8 +138,6 @@
                 <ul class="list-disc list-inside space-y-2 text-gray-600">
                     <li>Stewart, J. (2018). <em>Cálculo de varias variables</em>. 8ª edición. Cengage Learning.</li>
                     <li>Larson, R., & Edwards, B. H. (2019). <em>Multivariable Calculus</em>. 11ª edición. Cengage Learning.</li>
-                    <li>Organización Meteorológica Mundial. (2018). <em>Guide to Meteorological Instruments and Methods of Observation</em>. WMO-No. 8.</li>
-                    <li>Holton, J. R. (2012). <em>An Introduction to Dynamic Meteorology</em>. 5ª edición. Academic Press.</li>
                     <li>Stull, R. B. (2017). <em>Practical Meteorology: An Algebra-based Survey of Atmospheric Science</em>. University of British Columbia.</li>
                 </ul>
             </section>
@@ -260,15 +184,6 @@
             timeData.temperatures.push(T(x, 1500).toFixed(2));
         }
         
-        const altitudeData = {
-            labels: [],
-            temperatures: []
-        };
-        for (let y = 1500; y <= 2500; y += 250) {
-            altitudeData.labels.push(`${y} m`);
-            altitudeData.temperatures.push(T(12, y).toFixed(2));
-        }
-
         const createChart = (ctx, type, labels, data, label, backgroundColor, borderColor) => {
             new Chart(ctx, {
                 type: type,
@@ -315,9 +230,6 @@
 
         const ctxTime = document.getElementById('tempVsTimeChart').getContext('2d');
         createChart(ctxTime, 'line', timeData.labels, timeData.temperatures, 'Temperatura (°C)', brilliantBlues.lightTeal, brilliantBlues.teal);
-
-        const ctxAltitude = document.getElementById('tempVsAltitudeChart').getContext('2d');
-        createChart(ctxAltitude, 'bar', altitudeData.labels, altitudeData.temperatures, 'Temperatura (°C)', [brilliantBlues.darkBlue, brilliantBlues.teal, brilliantBlues.lightTeal, brilliantBlues.beige, brilliantBlues.gold], brilliantBlues.darkBlue);
 
         const plot3DData = () => {
             let x_values = [];
